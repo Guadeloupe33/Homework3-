@@ -12,9 +12,35 @@
 <body>
     <main>
          <header class="header">
+            <h1> Welcome to the worl best password generator</h1>
 
          </header>
-
+         <h1>Password Generator</h1>
+         <button id="generate">Generate Password</button>
+         <input type="text" id="password" readonly>
+         
+         <script>
+           var generateButton = document.getElementById('generate');
+           var passwordField = document.getElementById('password');
+           
+           var uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+           var lowercaseChars = 'abcdefghijklmnopqrstuvwxyz';
+           var numberChars = '0123456789';
+           var specialChars = '!@#$%^&*()_+{}[]~-';
+           
+           generateButton.addEventListener('click', () => {
+             var length = 12; // Desired password length
+             var allChars = uppercaseChars + lowercaseChars + numberChars + specialChars;
+             let generatedPassword = '';
+             
+             for (let i = 0; i < length; i++) {
+               const randomIndex = Math.floor(Math.random() * allChars.length);
+               generatedPassword += allChars[randomIndex];
+             }
+             
+             passwordField.value = generatedPassword;
+           });
+         </script>
     </main>
     
 </body>
